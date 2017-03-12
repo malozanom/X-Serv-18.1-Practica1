@@ -55,7 +55,6 @@ class shortenUrls (webapp.webApp):
                            "<input type='submit' value='Enviar'></form>" + \
                            "<h1><u>Lista de URLs acortadas</u></h1>" + \
                            "<h3>" + lista + "</h3>"
-
             else:
                 htmlBody = "<form method='POST' action=''>" + \
                            "<h1>URL que desea acortar: </h1><br>" + \
@@ -102,6 +101,7 @@ class shortenUrls (webapp.webApp):
             httpCode = "404 Not Found"
             htmlBody = "<html><body><h1>" + "No encontrado" + \
                        "</h1></body></html>"
+
         return (httpCode, htmlBody)
 
     def add(self, url):
@@ -118,6 +118,7 @@ class shortenUrls (webapp.webApp):
             self.urlsDict[url] = shortUrl
             self.numDict[num] = url
             self.addFile(url, shortUrl)
+
         return (self.urlsDict[url])
 
     def addFile(self, url, shortUrl):
@@ -134,6 +135,7 @@ class shortenUrls (webapp.webApp):
         lista = ''
         for url in self.urlsDict:
             lista = lista + url + " => " + self.urlsDict[url] + '<br>'
+
         return lista
 
 if __name__ == "__main__":
